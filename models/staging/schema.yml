@@ -5,7 +5,7 @@ models:
     description: This table has .....
     columns:
       - name: customer_id
-        description: This is the unique identifier
+        description: This is the unique identifier but not a table
         tests:
           - unique
           - not_null
