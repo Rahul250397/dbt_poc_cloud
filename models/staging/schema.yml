@@ -11,7 +11,7 @@ models:
           - not_null
 
   - name: stg_orders
-    description: This is not a table
+    description: This is not a table but a view
     columns:
       - name: order_id
         tests:
