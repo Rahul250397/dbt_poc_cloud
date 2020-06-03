@@ -8,4 +8,6 @@ This [dbt](https://www.getdbt.com/) project is for demonstrations and tutorials.
 
 The source code can be found [here](https://github.com/clrcrl/jaffle_shop).
 
+** NOTE ** :If you want to change the default doc overview, it can be changed by overwriting the overview  file present in the models.
+
 {% enddocs %}

@@ -1,22 +1,25 @@
 
-name: 'dbt_poc_postgre'
+name: 'phdata_dbt'
 version: '0.1'
-profile: 'dbt_poc_postgre'
+profile: 'default'
 source-paths: ["models"]
 analysis-paths: ["analysis"]
 test-paths: ["tests"]
 data-paths: ["data"]
 macro-paths: ["macros"]
-
 target-path: "target"
 clean-targets:
     - "target"
     - "dbt_modules"
     - "logs"
-
 models:
-  dbt_poc_postgre:
-      materialized: table
-      staging:
+  phdata_dbt:
+      L1:
         materialized: view
-        tags: ["staging", "hourly"]
+        tags: ["L1"]
+      L2:
+        materialized: view
+        tags: ["L2"]
+      L3:
+        materialized: table
+        tags: ["L3"]

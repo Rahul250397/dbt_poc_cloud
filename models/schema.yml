@@ -1,0 +1,90 @@
+version: 2
+
+sources:
+  - name: rahul_jaffle_shop
+    database: postgres
+    tables:
+      - name: raw_customers
+      - name: raw_orders
+      - name: raw_payments 
+
+models:
+  - name: stg_customers
+    description: '{{ doc("table_desc") }}'
+    columns:
+      - name: customer_id
+        description: This is the unique identifier for customers.
+        tests:
+          - unique
+          - not_null
+      - name: initials
+        description: Prefix for the person's name 
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Mr','Ms']
+      - name: first_name
+        description: This is the unique identifier
+        tests:
+          - not_null
+      - name: last_name
+        description: This is the unique identifier
+        tests:
+          - not_null
+      - name: email
+        description: This is the unique identifier
+        tests:
+          - unique
+          - email_check
+      - name: gender
+        description: This is the unique identifier
+        tests:
+          - not_null 
+          - accepted_values:
+              values: ['M','F','U']   
+      - name: mobile
+        description: This is the unique identifier
+        tests:
+          - unique
+          - mobile_check
+
+  - name: stg_orders
+    columns:
+      - name: order_id
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        tests:
+          - not_null
+      - name: order_date
+        tests:
+          - not_null        
+      - name: status
+        tests:
+          - accepted_values:
+              values: ['completed','returned']
+
+  - name: stg_payments
+    columns:
+      - name: payment_id
+        tests:
+          - unique
+          - not_null
+      - name: order_id
+        tests:
+          - not_null
+      - name: payment_method
+        tests:
+          - not_null
+      - name: amount
+        tests:
+          - not_null
+      - name: tax_amount
+        tests:
+          - not_null                
+      - name: card_type
+        tests:
+          - accepted_values:
+              values: ['Vasa','Master Card','American Express','Diners Club']             
+
